@@ -17,5 +17,15 @@
   "bugs": {
     "url": "https://github.com/VaalIT/movies-explorer-api/issues"
   },
-  "homepage": "https://github.com/VaalIT/movies-explorer-api#readme"
+  "homepage": "https://github.com/VaalIT/movies-explorer-api#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "celebrate": "^15.0.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.2",
+    "validator": "^13.7.0"
+  }
 }
