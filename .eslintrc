@@ -1,0 +1,9 @@
+{
+  "extends": "airbnb-base",
+  "plugins": [
+    "regex"
+  ],
+  "rules": {
+    "no-underscore-dangle": ["error", {"allow": ["_id"]}]
+  }
+}
