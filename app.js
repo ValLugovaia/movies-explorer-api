@@ -12,11 +12,11 @@ const { error } = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('./middlewares/cors');
 
-const { PORT = 3000 } = process.env;
+const { PORT, DB_URL } = require('./utils/config');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
+mongoose.connect(DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   family: 4,
