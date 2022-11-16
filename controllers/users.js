@@ -5,6 +5,12 @@ const BadRequest = require('../utils/BadRequest');
 const NotFound = require('../utils/NotFound');
 const Conflict = require('../utils/Conflict');
 const InternalServerError = require('../utils/InternalServerError');
+const {
+  CONFLICT_SIGNUP,
+  BAD_REQUEST_SIGNUP,
+  BAD_REQUEST_UPDATE_USERINFO,
+  NOT_FOUND_USER,
+} = require('../utils/ErrorMessages');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -37,9 +43,9 @@ module.exports.signup = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.code === 11000) {
-        next(new Conflict('Пользователь с таким Email уже существует'));
+        next(new Conflict(CONFLICT_SIGNUP));
       } else if (err.name === 'ValidationError') {
-        next(new BadRequest('Переданы некорректные данные при обновлении профиля'));
+        next(new BadRequest(BAD_REQUEST_SIGNUP));
       } else {
         next(new InternalServerError());
       }
@@ -53,7 +59,7 @@ module.exports.signout = (req, res) => {
 module.exports.getUserInfo = (req, res, next) => {
   User.findById(req.user._id)
     .orFail(() => {
-      throw new NotFound('Пользователь не найден');
+      throw new NotFound(NOT_FOUND_USER);
     })
     .then((user) => res.send(user))
     .catch(next);
@@ -64,12 +70,12 @@ module.exports.updateUserInfo = (req, res, next) => {
 
   User.findByIdAndUpdate(req.user._id, { name }, { new: true, runValidators: true })
     .orFail(() => {
-      throw new NotFound('Пользователь не найден');
+      throw new NotFound(NOT_FOUND_USER);
     })
     .then((user) => res.send({ name: user.name }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequest('Переданы некорректные данные при обновлении профиля'));
+        next(new BadRequest(BAD_REQUEST_UPDATE_USERINFO));
       }
       next(new InternalServerError());
     });
