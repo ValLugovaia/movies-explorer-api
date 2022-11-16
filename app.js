@@ -11,6 +11,7 @@ const routes = require('./routes');
 const { error } = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('./middlewares/cors');
+const limiter = require('./middlewares/limiter');
 
 const { PORT, DB_URL } = require('./utils/config');
 
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
+app.use(limiter);
 
 app.use(routes);
 
