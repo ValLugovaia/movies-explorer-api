@@ -74,4 +74,3 @@ module.exports.updateUserInfo = (req, res, next) => {
       next(new InternalServerError());
     });
 };
-
