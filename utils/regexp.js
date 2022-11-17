@@ -1,2 +1,1 @@
-/* eslint-disable no-useless-escape */
-module.exports.regexp = /https?:\/\/(www\.)?[\w\-]+\.[\w\-.~:\/?#[\]@!$&'()*+,;=]{2,}#?/;
+module.exports.regexp = /https?:\/\/(www\.)?[a-zA-Z\d-]+\.[\w\d\-.~:/?#[\]@!$&'()*+,;=]{2,}#?/;
