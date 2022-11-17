@@ -12,14 +12,14 @@ const {
   NOT_FOUND_USER,
 } = require('../utils/ErrorMessages');
 
-const { NODE_ENV, JWT_SECRET } = process.env;
+const { JWT_KEY } = require('../utils/config');
 
 module.exports.signin = (req, res, next) => {
   const { email, password } = req.body;
 
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, JWT_KEY, { expiresIn: '7d' });
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
