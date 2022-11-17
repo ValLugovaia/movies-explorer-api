@@ -6,7 +6,7 @@ const NotFound = require('../utils/NotFound');
 const Conflict = require('../utils/Conflict');
 const InternalServerError = require('../utils/InternalServerError');
 const {
-  CONFLICT_SIGNUP,
+  CONFLICT_EMAIL,
   BAD_REQUEST_SIGNUP,
   BAD_REQUEST_UPDATE_USERINFO,
   NOT_FOUND_USER,
@@ -43,7 +43,7 @@ module.exports.signup = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.code === 11000) {
-        next(new Conflict(CONFLICT_SIGNUP));
+        next(new Conflict(CONFLICT_EMAIL));
       } else if (err.name === 'ValidationError') {
         next(new BadRequest(BAD_REQUEST_SIGNUP));
       } else {
@@ -72,9 +72,16 @@ module.exports.updateUserInfo = (req, res, next) => {
     .orFail(() => {
       throw new NotFound(NOT_FOUND_USER);
     })
-    .then((user) => res.send({ email: user.email, name: user.name }))
+    .then((user) => res.send({
+      user: {
+        email: user.email,
+        name: user.name,
+      },
+    }))
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err.code === 11000) {
+        next(new Conflict(CONFLICT_EMAIL));
+      } else if (err.name === 'ValidationError') {
         next(new BadRequest(BAD_REQUEST_UPDATE_USERINFO));
       }
       next(new InternalServerError());
