@@ -66,13 +66,13 @@ module.exports.getUserInfo = (req, res, next) => {
 };
 
 module.exports.updateUserInfo = (req, res, next) => {
-  const { name } = req.body;
+  const { email, name } = req.body;
 
-  User.findByIdAndUpdate(req.user._id, { name }, { new: true, runValidators: true })
+  User.findByIdAndUpdate(req.user._id, { email, name }, { new: true, runValidators: true })
     .orFail(() => {
       throw new NotFound(NOT_FOUND_USER);
     })
-    .then((user) => res.send({ name: user.name }))
+    .then((user) => res.send({ email: user.email, name: user.name }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequest(BAD_REQUEST_UPDATE_USERINFO));

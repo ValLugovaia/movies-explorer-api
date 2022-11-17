@@ -29,6 +29,10 @@ module.exports.signupValidation = celebrate({
 
 module.exports.updateUserInfoValidation = celebrate({
   body: Joi.object().keys({
+    email: Joi.string().required().email()
+      .messages({
+        'string.email': INCORRECT_EMAIL,
+      }),
     name: Joi.string().required().min(2).max(30)
       .messages({
         'string.min': MIN_NAME,
@@ -41,7 +45,7 @@ module.exports.createMovieValidation = celebrate({
   body: Joi.object().keys({
     country: Joi.string().required(),
     director: Joi.string().required(),
-    duration: Joi.string().required(),
+    duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
     image: Joi.string().required().regex(regexp),
