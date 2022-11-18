@@ -83,7 +83,8 @@ module.exports.updateUserInfo = (req, res, next) => {
         next(new Conflict(CONFLICT_EMAIL));
       } else if (err.name === 'ValidationError') {
         next(new BadRequest(BAD_REQUEST_UPDATE_USERINFO));
+      } else {
+        next(new InternalServerError());
       }
-      next(new InternalServerError());
     });
 };

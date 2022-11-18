@@ -11,7 +11,8 @@ const {
 } = require('../utils/ErrorMessages');
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
+  const owner = req.user._id;
+  Movie.find({ owner })
     .populate(['owner'])
     .then((movies) => res.send(movies))
     .catch(next);
