@@ -25,7 +25,7 @@ module.exports.signin = (req, res, next) => {
         httpOnly: true,
         sameSite: true,
       });
-      return res.send({ token, email }).end();
+      res.send({ message: 'Выполнен вход в аккаунт' });
     })
     .catch(next);
 };
@@ -52,8 +52,16 @@ module.exports.signup = (req, res, next) => {
     });
 };
 
-module.exports.signout = (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
+module.exports.signout = (req, res, next) => {
+  User.findOne(req.body)
+    .then(() => {
+      res.clearCookie('jwt', {
+        httpOnly: true,
+        sameSite: true,
+      })
+        .send({ message: 'Выполнен выход из аккаунта' });
+    })
+    .catch(next);
 };
 
 module.exports.getUserInfo = (req, res, next) => {
