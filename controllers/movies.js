@@ -8,7 +8,7 @@ const {
   BAD_REQUEST_DELETE_MOVIE,
   FORBIDDEN_DELETE_MOVIE,
   NOT_FOUND_MOVIE,
-} = require('../utils/ErrorMessages');
+} = require('../utils/messages');
 
 module.exports.getMovies = (req, res, next) => {
   const owner = req.user._id;

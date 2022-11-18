@@ -5,7 +5,7 @@ const moviesRouter = require('./movies');
 const NotFound = require('../utils/NotFound');
 const { signin, signup, signout } = require('../controllers/users');
 const auth = require('../middlewares/auth');
-const { NOT_FOUND_PAGE } = require('../utils/ErrorMessages');
+const { NOT_FOUND_PAGE } = require('../utils/messages');
 const { signinValidation, signupValidation } = require('../middlewares/validation');
 
 router.post('/signup', signupValidation, signup);

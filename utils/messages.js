@@ -7,10 +7,13 @@ module.exports = {
   FORBIDDEN_DELETE_MOVIE: 'У вас нет прав для удаления фильма',
   INCORRECT_EMAIL: 'Некорректный формат Email-почты',
   INCORRECT_URL: 'Некорректный формат URL-ссылки',
+  SERVER_ERROR_MESSAGE: 'На сервере произошла ошибка',
   MAX_NAME: 'Имя пользователя не должно составлять более 30 знаков',
   MIN_NAME: 'Имя пользователя не должно составлять менее 2 знаков',
   NOT_FOUND_MOVIE: 'Фильм с указанным id не найден',
   NOT_FOUND_PAGE: 'Страница не найдена',
   NOT_FOUND_USER: 'Пользователь не найден',
+  SIGNIN_MESSAGE: 'Выполнен вход в аккаунт',
+  SIGNOUT_MESSAGE: 'Выполнен выход из аккаунта',
   UNAUTHORIZED_MESSAGE: 'Ошибка при авторизации',
 };

@@ -1,8 +1,10 @@
+const { SERVER_ERROR_MESSAGE } = require('./messages');
+
 class InternalServerError extends Error {
   constructor() {
     super();
     this.statusCode = 500;
-    this.message = 'Произошла внутренняя ошибка сервера';
+    this.message = SERVER_ERROR_MESSAGE;
   }
 }
 

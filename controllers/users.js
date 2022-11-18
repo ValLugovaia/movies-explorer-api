@@ -10,7 +10,9 @@ const {
   BAD_REQUEST_SIGNUP,
   BAD_REQUEST_UPDATE_USERINFO,
   NOT_FOUND_USER,
-} = require('../utils/ErrorMessages');
+  SIGNIN_MESSAGE,
+  SIGNOUT_MESSAGE,
+} = require('../utils/messages');
 
 const { JWT_KEY } = require('../utils/config');
 
@@ -25,7 +27,7 @@ module.exports.signin = (req, res, next) => {
         httpOnly: true,
         sameSite: true,
       });
-      res.send({ message: 'Выполнен вход в аккаунт' });
+      res.send({ message: SIGNIN_MESSAGE });
     })
     .catch(next);
 };
@@ -59,7 +61,7 @@ module.exports.signout = (req, res, next) => {
         httpOnly: true,
         sameSite: true,
       })
-        .send({ message: 'Выполнен выход из аккаунта' });
+        .send({ message: SIGNOUT_MESSAGE });
     })
     .catch(next);
 };

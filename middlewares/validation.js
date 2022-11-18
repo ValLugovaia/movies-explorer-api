@@ -1,6 +1,6 @@
 const { Joi, celebrate } = require('celebrate');
 const { regexp } = require('../utils/regexp');
-const { INCORRECT_EMAIL, MAX_NAME, MIN_NAME } = require('../utils/ErrorMessages');
+const { INCORRECT_EMAIL, MAX_NAME, MIN_NAME } = require('../utils/messages');
 
 module.exports.signinValidation = celebrate({
   body: Joi.object().keys({
