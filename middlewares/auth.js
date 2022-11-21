@@ -6,13 +6,13 @@ const { UNAUTHORIZED_MESSAGE } = require('../utils/messages');
 const { JWT_KEY } = require('../utils/config');
 
 module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
+  const token = req.cookies.jwt;
 
-  if (!authorization || !authorization.startsWith('Bearer ')) {
-    throw new Unauthorized(UNAUTHORIZED_MESSAGE);
+  if (!token) {
+    next(new Unauthorized(UNAUTHORIZED_MESSAGE));
+    return;
   }
 
-  const token = authorization.replace('Bearer ', '');
   let payload;
 
   try {
