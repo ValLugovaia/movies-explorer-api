@@ -27,7 +27,7 @@ module.exports.signin = (req, res, next) => {
         httpOnly: true,
         sameSite: true,
       });
-      res.send({ message: SIGNIN_MESSAGE });
+      res.send({ token, message: SIGNIN_MESSAGE });
     })
     .catch(next);
 };
