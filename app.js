@@ -6,14 +6,14 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const routes = require('./routes');
 const { error } = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
 const limiter = require('./middlewares/limiter');
 
-const { PORT, DB_URL } = require('./utils/config');
+const { PORT, DB_URL, allowedCors } = require('./utils/config');
 
 const app = express();
 
@@ -23,7 +23,10 @@ mongoose.connect(DB_URL, {
   family: 4,
 });
 
-app.use(cors);
+app.use(cors({
+  origin: allowedCors,
+  credentials: true,
+}));
 
 app.use(helmet());
 app.use(cookieParser());
