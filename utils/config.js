@@ -9,6 +9,8 @@ const DB_URL = NODE_ENV === 'production' ? DB_URL_ENV : 'mongodb://localhost:270
 const allowedCors = [
   'http://localhost:3000',
   'localhost:3000',
+  'http://localhost:8000',
+  'localhost:8000',
   'https://movies-explorer.vaal.nomoredomains.icu',
   'http://movies-explorer.vaal.nomoredomains.icu',
 ];
