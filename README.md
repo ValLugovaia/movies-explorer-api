@@ -17,7 +17,8 @@
 <https://api.movies-explorer.vaal.nomoredomains.icu/>
 
 ## Инструкция по развёртыванию
-> git clone https://github.com/ValLugovaia/movies-explorer-api.git
-> cd movies-explorer-api
-> npm install
+```
+git clone https://github.com/ValLugovaia/movies-explorer-api.git
+cd movies-explorer-api
+npm install
 
