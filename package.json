@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VaalIT/movies-explorer-api.git"
+    "url": "git+https://github.com/ValLugovaia/movies-explorer-api.git"
   },
   "author": "Valentina Lugovaia",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VaalIT/movies-explorer-api/issues"
+    "url": "https://github.com/ValLugovaia/movies-explorer-api/issues"
   },
-  "homepage": "https://github.com/VaalIT/movies-explorer-api#readme",
+  "homepage": "https://github.com/ValLugovaia/movies-explorer-api#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
