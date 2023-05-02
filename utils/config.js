@@ -13,6 +13,8 @@ const allowedCors = [
   'localhost:8000',
   'https://movies-explorer.vaal.nomoredomains.icu',
   'http://movies-explorer.vaal.nomoredomains.icu',
+  'http://1398493-ct78522.tw1.ru',
+  'https://1398493-ct78522.tw1.ru',
 ];
 
 module.exports = {
