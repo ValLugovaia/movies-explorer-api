@@ -14,7 +14,7 @@
 4. MongoDB
 
 ## Ссылки
-<https://api.movies-explorer.vaal.nomoredomains.icu/>
+<http://api.1398493-ct78522.tw1.ru/>
 
 ## Инструкция по развёртыванию
 ```
